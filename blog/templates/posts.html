@@ -1,0 +1,18 @@
+{% extends 'layout.html'%}
+{% block content %}
+<h1>Posts</h1>
+
+{% for post in posts %}
+    <div class="p-3">
+    <div class="card card-body bg-black">
+    <h2>{{post.title}}</h2>
+    <p>{{post.description|safe|truncatechars:100}}</p>
+    <p>{{post.date|date:'M d Y'|upper}}</p>
+    <div style="text-align: center;">
+    <img src="{{post.image.url}}" alt="{{post.title}}" width="550" height="400">
+    </div>
+    <h4><a href="{% url 'blog:post_detail' post.id %}">Detalle</a></h4>
+    </div>
+    </div>
+{% endfor %}
+{% endblock %}
